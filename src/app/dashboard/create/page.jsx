@@ -1,8 +1,19 @@
 "use client";
+
+import { addPost } from "@/lib/serverActions/blog/postServerActions";
+
+
 function page() {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
+    console.log(formData);
+
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value)
+    }
+
+    const result = await addPost(formData)
   }
 
   return (
